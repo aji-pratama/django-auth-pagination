@@ -1,0 +1,20 @@
+.nav-main{
+  background-color: #5fcf80;
+}
+
+.nav-main-admin{
+  background-color: #7cbf90;
+}
+
+
+.main-container{
+  margin-top: 80px;
+}
+
+.nav-main a{
+  color: #ffffff;
+}
+
+.nav-main-admin a{
+  color: #ffffff;
+}

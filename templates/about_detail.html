@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>{{ about.title }}</h1>
+  <p>Dipost pada tanggal {{ about.tgl_post }}  </p>
+
+  <h3>
+    {{ about.desc_detail }}
+  </h3> <br>
+  <h3>Komentar</h3>
+<hr>
+<div>
+  {% for kom in komentar %}
+  <p>
+    <h5>Komentar dari <b>{{ kom.komentator }}</b> : <br></h5>
+    {{ kom.body }} <br>
+  </p> <br>
+  {% endfor %}
+</div>
+
+  {% if request.user.username %}
+  <p>
+    <form class="col-md-3" action="{% url about_komentar %}" method="post">{% csrf_token %}
+      <label>Komentar : </label><textarea class="form-control" name="body"> </textarea><br>
+      <input type="hidden" name="komentator" value="{{ request.user.username }}">
+      <input type="hidden" name="untuk" value="about">
+      <input class="btn btn-default" type="submit" name="submit" value="Send">
+    </form>
+  </p>
+  {% else %}
+    <p>
+      <a href="{% url login %}">Login Untuk Komentar</a>
+    </p>
+
+
+  {% endif %}
+
+</div>
+<hr>
+{% endblock %}
